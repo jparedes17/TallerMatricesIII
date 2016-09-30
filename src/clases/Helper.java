@@ -196,5 +196,41 @@ public class Helper {
         aux = aux.substring(0, aux.length()-2)+".";
         return aux;
     }
+    
+    public static String recorridoHaciaIzquierda(int[][] m, int i) {
+        int nc = m[0].length;
+        String aux = "";
+        for (int j = nc-1; j >= 0; j--) {
+            aux = aux + m[i][j] + ", ";
+        }
+        return aux;
+
+    }
+    public static String recorridoHaciaDerecha(int[][] m, int i) {
+        int nc = m[0].length;
+        String aux = "";
+        for (int j = 0; j < nc; j++) {
+            aux = aux + m[i][j] + ", ";
+        }
+        return aux;
+
+    }
+    
+    public static String recorridoDos(JTable tabla1){
+        int m[][] = pasoDeDatos(tabla1);
+        int nf = m.length;
+        String aux="";
+        for (int i = 0; i < nf; i++) {
+            if(i%2==0){
+                aux=aux+ recorridoHaciaIzquierda(m, i);
+            }else{
+                aux=aux+recorridoHaciaDerecha(m, i);
+            }
+            
+        }
+        aux = aux.substring(0, aux.length()-2)+".";
+        return aux;
+    }
+    
 
 }

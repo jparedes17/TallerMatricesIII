@@ -26,7 +26,7 @@ public class Test {
         m[3][1]=2;
         m[3][2]=9;
         
-        //System.out.println(Helper.recorridoUno(m));
+        System.out.println(Helper.recorridoHaciaDerecha(m,1));
         
     
     }
