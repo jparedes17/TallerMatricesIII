@@ -298,6 +298,9 @@ public class Principal extends javax.swing.JFrame {
             case 4:
                 Helper.letraH(tblTablaInicial, tblTablaResultado);
                 break;
+                 case 5:
+                Helper.letraH(tblTablaInicial, tblTablaResultado);
+                break;
         }
         
         JButton botonesH[]={cmdOperacion,cmdLimpiar};
