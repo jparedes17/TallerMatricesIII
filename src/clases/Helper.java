@@ -171,11 +171,31 @@ public class Helper {
         return aux;
 
     }
+    
+     public static String recorridoHaciaArriba(int[][] m, int j, int in, int fin) {
+      
+        String aux = "";
+        for (int i = in; i >= fin; i--) {
+            aux = aux + m[i][j] + ", ";
+        }
+        return aux;
+
+    }
 
     public static String recorridoHaciaAbajo(int[][] m, int j) {
         int nf = m.length;
         String aux = "";
         for (int i = 0; i < nf; i++) {
+            aux = aux + m[i][j] + ", ";
+        }
+        return aux;
+
+    }
+    
+     public static String recorridoHaciaAbajo(int[][] m, int j, int in, int fin) {
+      
+        String aux = "";
+        for (int i = in; i < fin; i++) {
             aux = aux + m[i][j] + ", ";
         }
         return aux;
@@ -206,10 +226,30 @@ public class Helper {
         return aux;
 
     }
+    
+     public static String recorridoHaciaIzquierda(int[][] m, int i, int in, int fin) {
+        
+        String aux = "";
+        for (int j =in; j >= fin; j--) {
+            aux = aux + m[i][j] + ", ";
+        }
+        return aux;
+
+    }
     public static String recorridoHaciaDerecha(int[][] m, int i) {
         int nc = m[0].length;
         String aux = "";
         for (int j = 0; j < nc; j++) {
+            aux = aux + m[i][j] + ", ";
+        }
+        return aux;
+
+    }
+    
+    public static String recorridoHaciaDerecha(int[][] m, int i,int in, int fin) {
+       
+        String aux = "";
+        for (int j = in; j < fin; j++) {
             aux = aux + m[i][j] + ", ";
         }
         return aux;
