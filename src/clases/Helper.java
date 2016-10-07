@@ -257,6 +257,55 @@ public class Helper {
 
     }
     
+     public static String recorridoDiagonalSecundariaAbajo(int[][] m) {
+        int nf = m.length;
+        int nc =m[0].length;
+        String aux = "";
+        for (int i = 0; i < nf; i++) {
+            aux = aux + m[i][nc-1-i]+ ", ";
+            
+        }
+        return aux;
+
+    }
+     
+     public static String recorridoDiagonalSecundariaArriba(int[][] m) {
+        int nf = m.length;
+        int nc =m[0].length;
+        String aux = "";
+        for (int i = nf-1; i >= 0; i--) {
+            aux = aux + m[i][nc-1-i]+ ", ";
+            
+        }
+        return aux;
+
+    }
+     
+     public static String recorridoDiagonalSecundariaArriba(int[][] m, int in, int fin) {
+        
+        int nc =m[0].length;
+        String aux = "";
+        for (int i = in; i >= fin; i--) {
+            aux = aux + m[i][nc-1-i]+ ", ";
+            
+        }
+        return aux;
+
+    }
+     
+     public static String recorridoDiagonalSecundariaAbajo(int[][] m, int in, int fin) {
+      
+        int nc =m[0].length;
+        String aux = "";
+        for (int i = in; i <= fin; i++) {
+            aux = aux + m[i][nc-1-i]+ ", ";
+            
+        }
+        return aux;
+
+    }
+    
+    
     public static String recorridoDiagonalPrincipalArriba(int[][] m) {
         int nf = m.length;
         String aux = "";
