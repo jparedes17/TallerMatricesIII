@@ -174,7 +174,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 360, 210));
 
-        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cant. Num Pares", "Números Pares", "Letra C", "Diagonal Prinpal", "Letra H", "Recorrido Uno", "Recorrido Dos", "Recorrido Tres" }));
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recorrido Uno", "Recorrido Dos", "Recorrido Tres", "Recorrido Cuatro", "Recorrido Cinco", "Recorrido Seis", " ", " " }));
         jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
 
         tblTablaInicial.setModel(new javax.swing.table.DefaultTableModel(
@@ -224,6 +224,39 @@ public class Principal extends javax.swing.JFrame {
         int nf, nc;
         DefaultTableModel tm, tm2;
 
+        if (txtNumerodeColumnas.getText().trim().isEmpty())
+        {
+          Helper.mensaje(this, "Ingrese el Numero de Columnas", 3);
+          txtNumerodeColumnas.requestFocusInWindow();
+        }
+        else if (txtNumerodeFilas.getText().trim().isEmpty()){
+            Helper.mensaje(this, "Ingrese el Numero de Filas", 3);
+            txtNumerodeFilas.requestFocusInWindow();
+        }
+        else {
+            
+        try{
+        nf = Integer.parseInt(txtNumerodeFilas.getText());
+        nc = Integer.parseInt(txtNumerodeColumnas.getText());
+
+        if (nf <4)
+        {
+           Helper.mensaje(this, "El numero de filas no puede ser menor a 4", 2);
+        }
+        else if (nc <4)
+        {
+            Helper.mensaje(this, "El numero de columnas no puede ser menor a 4 ", 2);
+        }
+        else if ( nc>=12)
+        {
+            Helper.mensaje(this, "El numero de columnas no puede ser mayor a 12 ", 2);
+        }
+        else if ( nf >=12 )
+        {
+           Helper.mensaje(this, "El numero de filas no puede mayor a 12", 2);
+        }
+        else {
+        
         nf = Integer.parseInt(txtNumerodeFilas.getText());
         nc = Integer.parseInt(txtNumerodeColumnas.getText());
 
@@ -241,6 +274,13 @@ public class Principal extends javax.swing.JFrame {
         
         Helper.habilitarBotones(botonesH);
         Helper.deshabilitarBotones(botonesD);
+        
+        }
+        }catch (NumberFormatException e)
+        {
+           Helper.mensaje(this, "Ingrese un numero valido", 3);
+        }
+        }
     }//GEN-LAST:event_cmdCrearActionPerformed
 
     private void cmdLlenadoAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenadoAutomaticoActionPerformed
@@ -266,35 +306,61 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdLlenadoAutomaticoActionPerformed
 
     private void cmdOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionActionPerformed
-        int op, cantPares;
+        int op, cantPares, nf, nc;
+        DefaultTableModel tm, tm2;
         op = cmbOperaciones.getSelectedIndex();
         Helper.limpiadoTabla(tblTablaResultado);
-        
+        nf = Integer.parseInt(txtNumerodeFilas.getText());
+        nc = Integer.parseInt(txtNumerodeColumnas.getText());
+        tm = (DefaultTableModel) tblTablaInicial.getModel();
+        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
+        tm.setRowCount(nf);
+        tm.setColumnCount(nc);
+        tm2.setRowCount(nf);
+        tm2.setColumnCount(nc);
         switch (op) {
-            case 0:
-                cantPares = Helper.cantidadPares(tblTablaInicial);
-                txtResultado.setText("El número de elementos pares es: " + cantPares);
-                break;
-            case 1:
-                Helper.pares(tblTablaInicial, tblTablaResultado);
-                break;
-            case 2:
-                Helper.letraC(tblTablaInicial, tblTablaResultado);
-                break;
-            case 3:
-                Helper.diagonalPrincipal(tblTablaInicial, tblTablaResultado);
-                break;
-            case 4:
-                Helper.letraH(tblTablaInicial, tblTablaResultado);
-                break;
-                 case 5:
+                 case 0:
+                     if (nf != nc || nf%2 == 0 && nc%2 == 0)
+                {
+                    Helper.mensaje(this, "La matriz debe ser cuadrada e impar", 2);
+                }
+                else {
                 txtResultado.setText(Helper.recorridoUno(tblTablaInicial));
+                     }
                 break;
-                  case 6:
+                
+                  case 1:
+                      if (nf != nc || nf%2 == 0 && nc%2 == 0)
+                {
+                    Helper.mensaje(this, "La matriz debe ser cuadrada e impar", 2);
+                }
+                else {
                 txtResultado.setText(Helper.recorridoDos(tblTablaInicial));
+                      }
                 break;
-                      case 7:
+                
+                  case 2:
                 txtResultado.setText(Helper.recorridoTres(tblTablaInicial));
+                break;
+                
+                  case 3:
+                      if (nf != nc || nf%2 == 0 && nc%2 == 0)
+                {
+                    Helper.mensaje(this, "La matriz debe ser cuadrada e impar", 2);
+                }
+                else {
+                txtResultado.setText(Helper.recorridoCuatro(tblTablaInicial));
+                      }
+                break;
+                
+                  case 4:
+                      if (nf != nc || nf%2 == 0 && nc%2 == 0)
+                {
+                    Helper.mensaje(this, "La matriz debe ser cuadrada e impar", 2);
+                }
+                else {
+                txtResultado.setText(Helper.recorridoCinco(tblTablaInicial));
+                      }
                 break;
                      
         }
