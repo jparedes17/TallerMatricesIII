@@ -60,8 +60,6 @@ public class Principal extends javax.swing.JFrame {
         cmdLlenadoAutomatico = new javax.swing.JButton();
         cmdOperacion = new javax.swing.JButton();
         cmdLimpiar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblTablaResultado = new javax.swing.JTable();
         cmbOperaciones = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTablaInicial = new javax.swing.JTable();
@@ -162,20 +160,8 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 480, 60));
 
-        tblTablaResultado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tblTablaResultado);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 360, 210));
-
-        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recorrido Uno", "Recorrido Dos", "Recorrido Tres", "Recorrido Cuatro", "Recorrido Cinco", "Recorrido Seis", " ", " " }));
-        jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recorrido Uno", "Recorrido Dos", "Recorrido Tres", "Recorrido Cuatro", "Recorrido Cinco", "Recorrido Seis" }));
+        jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
 
         tblTablaInicial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblTablaInicial);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 360, 210));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 360, 210));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -222,7 +208,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
         int nf, nc;
-        DefaultTableModel tm, tm2;
+        DefaultTableModel tm;
 
         if (txtNumerodeColumnas.getText().trim().isEmpty())
         {
@@ -261,14 +247,10 @@ public class Principal extends javax.swing.JFrame {
         nc = Integer.parseInt(txtNumerodeColumnas.getText());
 
         tm = (DefaultTableModel) tblTablaInicial.getModel();
-        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
-
+        
         tm.setRowCount(nf);
         tm.setColumnCount(nc);
-
-        tm2.setRowCount(nf);
-        tm2.setColumnCount(nc);
-
+        
         JButton botonesH[]={cmdLlenadoManual,cmdLlenadoAutomatico, cmdLimpiar};
         JButton botonesD[]={cmdCrear, cmdOperacion};
         
@@ -309,15 +291,11 @@ public class Principal extends javax.swing.JFrame {
         int op, cantPares, nf, nc;
         DefaultTableModel tm, tm2;
         op = cmbOperaciones.getSelectedIndex();
-        Helper.limpiadoTabla(tblTablaResultado);
         nf = Integer.parseInt(txtNumerodeFilas.getText());
         nc = Integer.parseInt(txtNumerodeColumnas.getText());
         tm = (DefaultTableModel) tblTablaInicial.getModel();
-        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
         tm.setRowCount(nf);
         tm.setColumnCount(nc);
-        tm2.setRowCount(nf);
-        tm2.setColumnCount(nc);
         switch (op) {
                  case 0:
                      if (nf != nc || nf%2 == 0 && nc%2 == 0)
@@ -382,7 +360,6 @@ public class Principal extends javax.swing.JFrame {
         txtResultado.setText("");
 
        Helper.porDefectoTabla(tblTablaInicial);
-       Helper.porDefectoTabla(tblTablaResultado);
        
        JButton botonesH[]={cmdCrear, cmdLimpiar};
         JButton botonesD[]={cmdLlenadoManual,cmdLlenadoAutomatico,cmdOperacion};
@@ -418,7 +395,6 @@ public class Principal extends javax.swing.JFrame {
                             j = nc;
 
                             Helper.porDefectoTabla(tblTablaInicial);
-                            Helper.porDefectoTabla(tblTablaResultado);
                         } else {
                             sw = 0;
                         }
@@ -488,11 +464,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tblTablaInicial;
-    private javax.swing.JTable tblTablaResultado;
     private javax.swing.JTextField txtNumerodeColumnas;
     private javax.swing.JTextField txtNumerodeColumnas1;
     private javax.swing.JTextField txtNumerodeColumnas3;
